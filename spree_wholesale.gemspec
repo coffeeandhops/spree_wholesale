@@ -18,16 +18,19 @@ Gem::Specification.new do |s|
 
   s.require_paths = ["lib"]
 
-  s.add_dependency('spree_core', '~> 2.2.0')
-  s.add_dependency('spree_frontend', '~> 2.2.0')
-  s.add_dependency('spree_backend', '~> 2.2.0')
-  s.add_dependency('spree_auth_devise', '~> 2.2.0')
+  spree_version = '>= 3.1.0', '< 5.0'
+  s.add_runtime_dependency 'spree_core', spree_version
+  s.add_dependency 'spree_backend', spree_version
+  s.add_dependency 'spree_frontend', spree_version
+  s.add_dependency 'spree_api', spree_version
+  s.add_runtime_dependency 'spree_auth_devise', spree_version
+  s.add_runtime_dependency 'spree_extension'
 
-  s.add_development_dependency('spree_sample', '~> 2.2.0')
-  s.add_development_dependency('shoulda',      '~> 3.0.0')
-  s.add_development_dependency('factory_girl', '~> 2.6.0')
-  s.add_development_dependency('capybara',     '~> 1.1.2')
+  s.add_development_dependency('spree_sample', spree_version)
+  s.add_development_dependency('shoulda')
+  s.add_development_dependency('factory_bot')
+  s.add_development_dependency('capybara')
   s.add_development_dependency('launchy')
   s.add_development_dependency('sass-rails')
-  s.add_development_dependency('sqlite3',      '~> 1.3.4')
+  s.add_development_dependency('sqlite3')
 end
