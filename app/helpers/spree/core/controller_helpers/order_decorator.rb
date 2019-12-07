@@ -1,4 +1,4 @@
-Spree::Core::ControllerHelpers::Order.module_eval  do
+module Spree::Core::ControllerHelpers::OrderDecorator
 
   # The current incomplete order from the session for use in cart and during checkout
   def current_order(options = {})
@@ -37,3 +37,4 @@ Spree::Core::ControllerHelpers::Order.module_eval  do
     end
   end
 end
+Spree::Core::ControllerHelpers::Order.prepend Spree::Core::ControllerHelpers::OrderDecorator

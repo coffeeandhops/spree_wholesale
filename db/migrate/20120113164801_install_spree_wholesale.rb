@@ -1,4 +1,4 @@
-class InstallSpreeWholesale < ActiveRecord::Migration
+class InstallSpreeWholesale < SpreeExtension::Migration[4.2]
 
   def self.up
     create_table :spree_wholesalers do |t|

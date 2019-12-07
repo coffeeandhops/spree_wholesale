@@ -10,11 +10,11 @@ class Spree::Wholesaler < ActiveRecord::Base
   accepts_nested_attributes_for :user
 
   attr_accessor :use_billing
-  before_validation :clone_billing_address, :if => "@use_billing"  
+  before_validation :clone_billing_address, if: :use_billing
   validates :company, :buyer_contact, :phone, :presence => true
   
-  delegate_belongs_to :user, :spree_roles
-  delegate_belongs_to :user, :email
+  delegate :spree_roles, to: :user
+  delegate :email, to: :user
 
   def activate!
     get_wholesale_role

@@ -1,5 +1,5 @@
 module Spree
-  module WholesaleOrderDecorator
+  module OrderDecorator
     def payment_required?
       super && !_wholesale_with_net_terms?
     end
@@ -66,9 +66,6 @@ module Spree
       is_wholesale? && wholesaler.terms != 'Credit Card'
     end
   end
-
-  Order.class_eval do
-    prepend WholesaleOrderDecorator
-  end
-
 end
+
+Spree::Order.prepend Spree::OrderDecorator

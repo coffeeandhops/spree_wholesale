@@ -1,11 +1,18 @@
-[Spree::BaseController, Spree::Admin::BaseController].each do |controller|
+# [Spree::BaseController, Spree::Admin::BaseController].each do |controller|
 
-  controller.class_eval do
+#   controller.class_eval do
 
-    def default_country
-      @default_country ||= Spree::Country.find Spree::Config[:default_country_id]
-    end
+#     def default_country
+#       @default_country ||= Spree::Country.find Spree::Config[:default_country_id]
+#     end
 
+#   end
+
+# end
+module Spree::Admin::BaseControllerDecorator
+  def default_country
+    @default_country ||= Spree::Country.find Spree::Config[:default_country_id]
   end
-
 end
+
+Spree::Admin::BaseController.prepend Spree::Admin::BaseControllerDecorator
